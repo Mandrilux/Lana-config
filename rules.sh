@@ -4,6 +4,9 @@
 IPT="/sbin/iptables"
 
 
+#gateway rules
+iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
+
 # Remise a 0
 ${IPT} -F
 ${IPT} -t nat -F
@@ -84,21 +87,5 @@ ${IPT} -A INPUT -p udp -m multiport --dport 3478:3479,5060,5062,6250,12000:64000
 
 #Rocket league
 ${IPT} -A INPUT -p udp -m multiport --dport 7000:9000 -j ACCEPT
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
