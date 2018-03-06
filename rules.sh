@@ -4,12 +4,12 @@
 IPT="/sbin/iptables"
 
 
-#gateway rules
-iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
-
 # Remise a 0
 ${IPT} -F
 ${IPT} -t nat -F
+
+#gateway rules
+iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
 
 # Les connexions entrantes sont bloquées par défaut
 ${IPT} -P INPUT DROP
