@@ -2,6 +2,7 @@
 ## CONFIGURATION CYBERIADE ##
 
 IPT="/sbin/iptables"
+INTERFACE_0="enp2s0"
 
 
 # Remise a 0
@@ -26,7 +27,11 @@ ${IPT} -P OUTPUT ACCEPT
 # certaines conditions.
 
 # Pas de filtrage sur l'interface de "lo"
-${IPT} -A FORWARD -i lo -j ACCEPT
+${IPT} -A INPUT -i lo -j ACCEPT
+
+#on autorise tout le trafic de la carte réseau maitre
+
+#${IPT} -A OUTPUT -i {INTERFACE_0} -j ACCEPT
 
 # Accepter le protocole ICMP (notamment le ping)
 ${IPT} -A FORWARD -p icmp -j ACCEPT
@@ -35,6 +40,7 @@ ${IPT} -A FORWARD -p icmp -j ACCEPT
 # établies : cela va plus vite que de devoir réexaminer toutes
 # les règles pour chaque paquet.
 ${IPT} -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+${IPT} -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 
 # ftp 
 #${IPT} -A FORWARD -p tcp --dport 20 -j ACCEPT 
