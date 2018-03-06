@@ -1,5 +1,5 @@
 #!/bin/bash
-## CONFIGURATION CYBERIADE :
+## CONFIGURATION CYBERIADE ##
 
 IPT="/sbin/iptables"
 
