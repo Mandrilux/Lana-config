@@ -15,11 +15,9 @@ iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
 # Les connexions entrantes sont bloquées par défaut
 ${IPT} -P INPUT DROP
 # Les connexions destinées à être routées sont acceptées par défaut
-${IPT} -P FORWARD DROP
+${IPT} -P FORWARD ACCEPT
 # Les connexions sortantes sont acceptées par défaut
-${IPT} -P OUTPUT ACCEPT
-
-
+${IPT} -P OUTPUT DROPo
 
 
 
