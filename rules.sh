@@ -16,7 +16,7 @@ ${IPT} -P INPUT DROP
 # Les connexions destinées à être routées sont acceptées par défaut
 ${IPT} -P FORWARD ACCEPT
 # Les connexions sortantes sont acceptées par défaut
-${IPT} -P OUTPUT DROP
+${IPT} -P OUTPUT ACCEPT
 
 
 ######################
